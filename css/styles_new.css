@@ -2,6 +2,9 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px; /* Default font size */
 }
+body.ethics-open {
+    overflow: hidden;
+}
 img {
     max-width: 100%;
     height: auto;
@@ -1711,7 +1714,7 @@ footer {
     }
 
     #lead {
-        min-height: 72svh;
+        min-height: 60svh;
         padding-top: calc(80px + env(safe-area-inset-top));
         padding-bottom: calc(30px + env(safe-area-inset-bottom));
         background-position: center 18%;

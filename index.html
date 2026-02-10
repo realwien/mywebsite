@@ -247,7 +247,7 @@
                 if (isMobile() && overlay) {
                     overlay.classList.add('is-open');
                     overlay.setAttribute('aria-hidden', 'false');
-                    document.body.classList.add('active');
+                    document.body.classList.add('ethics-open');
                     return;
                 }
                 card.classList.toggle('is-flipped');
@@ -258,7 +258,7 @@
                     if (isMobile() && overlay) {
                         overlay.classList.add('is-open');
                         overlay.setAttribute('aria-hidden', 'false');
-                        document.body.classList.add('active');
+                        document.body.classList.add('ethics-open');
                         return;
                     }
                     card.classList.toggle('is-flipped');
@@ -269,7 +269,7 @@
                     if (e.target === overlay) {
                         overlay.classList.remove('is-open');
                         overlay.setAttribute('aria-hidden', 'true');
-                        document.body.classList.remove('active');
+                        document.body.classList.remove('ethics-open');
                     }
                 });
             }
@@ -277,7 +277,7 @@
                 closeBtn.addEventListener('click', function () {
                     overlay.classList.remove('is-open');
                     overlay.setAttribute('aria-hidden', 'true');
-                    document.body.classList.remove('active');
+                    document.body.classList.remove('ethics-open');
                 });
             }
         })();
