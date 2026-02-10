@@ -171,6 +171,36 @@ header a {
     padding: 10px;
 }
 
+.a11y-fab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1500;
+    border-radius: 25px;
+    border: 2px solid #000080;
+    background: #000080;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 10px 20px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.a11y-fab.is-on {
+    background: #ffffff;
+    color: #000080;
+}
+
+.a11y-fab:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
 .skip-link {
     position: absolute;
     top: -40px;
@@ -220,92 +250,6 @@ header .a11y-toggle:focus-visible {
     outline-offset: 3px;
 }
 
-.a11y-fab {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 1500;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    border: 2px solid #000080;
-    background: #ffffff;
-    color: #000080;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-}
-
-.a11y-fab.is-on {
-    background: #000080;
-    color: #ffffff;
-}
-
-.a11y-fab:focus-visible {
-    outline: 3px solid #ffbf47;
-    outline-offset: 3px;
-}
-
-.a11y-prompt {
-    position: fixed;
-    inset: 0;
-    z-index: 1600;
-    background: rgba(6, 8, 20, 0.65);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
-}
-
-.a11y-prompt.is-open {
-    opacity: 1;
-    visibility: visible;
-    transition-delay: 0s;
-}
-
-.a11y-prompt-card {
-    background: #ffffff;
-    color: #000000;
-    border-radius: 16px;
-    padding: 20px 22px;
-    max-width: 520px;
-    width: min(92vw, 520px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
-}
-
-.a11y-prompt-card h3 {
-    margin-top: 0;
-}
-
-.a11y-prompt-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 14px;
-}
-
-.a11y-enable,
-.a11y-dismiss {
-    border: 2px solid #000080;
-    background: #ffffff;
-    color: #000080;
-    font-weight: 600;
-    border-radius: 999px;
-    padding: 8px 16px;
-    cursor: pointer;
-}
-
-.a11y-enable:hover,
-.a11y-enable:focus,
-.a11y-dismiss:hover,
-.a11y-dismiss:focus {
-    background: #000080;
-    color: #ffffff;
-    outline: none;
-}
 header a:hover {
     color: #9900c9;
     text-decoration: none;
@@ -2217,6 +2161,11 @@ html.a11y-mode #footer .email-address {
         padding: 18px 16px;
         border-radius: 16px;
         backdrop-filter: blur(2px);
+    }
+
+    .a11y-fab {
+        font-size: 0.85em;
+        padding: 10px 14px;
     }
 
     .btn-rounded-white {
