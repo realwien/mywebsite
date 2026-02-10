@@ -198,6 +198,28 @@
             </div>
         </div>
     </footer>
+    <div class="ethics-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="ethics-dialog">
+            <button class="ethics-close" type="button" aria-label="Close">Close</button>
+            <h3>Image Ethics Note</h3>
+            <p>
+                This site includes AI-generated images. Generative AI is entangled with significant ethical concerns,
+                including environmental cost, data extraction, and the use of creative work without clear consent or compensation.
+                These conditions shape how the images are presented here.
+            </p>
+            <p>
+                Rather than functioning as illustrations of the future, the visuals are treated as cultural artifacts that reveal
+                dominant imaginaries of cyber-utopia and dystopia—and invite reflection on why technological futures are so often
+                pictured in the same ways. Their recurring aesthetics—neon luminosity, seamless cybernetic bodies, planetary ruins,
+                frictionless interfaces—do not simply depict possible worlds; they index the cultural logics, economic structures,
+                and historical narratives that make certain futures more visible than others.
+            </p>
+            <p>
+                The images are therefore used reflexively: not to affirm algorithmic vision as neutral or authoritative, but to
+                foreground the politics, infrastructures, and exclusions embedded in contemporary systems of automated image production.
+            </p>
+        </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/scripts.min.js"></script>
@@ -215,16 +237,49 @@
     <script>
         (function () {
             var card = document.querySelector('.research-card--flip');
+            var overlay = document.querySelector('.ethics-overlay');
+            var closeBtn = overlay ? overlay.querySelector('.ethics-close') : null;
+            var isMobile = function () {
+                return window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+            };
             if (!card) return;
             card.addEventListener('click', function () {
+                if (isMobile() && overlay) {
+                    overlay.classList.add('is-open');
+                    overlay.setAttribute('aria-hidden', 'false');
+                    document.body.classList.add('active');
+                    return;
+                }
                 card.classList.toggle('is-flipped');
             });
             card.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
+                    if (isMobile() && overlay) {
+                        overlay.classList.add('is-open');
+                        overlay.setAttribute('aria-hidden', 'false');
+                        document.body.classList.add('active');
+                        return;
+                    }
                     card.classList.toggle('is-flipped');
                 }
             });
+            if (overlay) {
+                overlay.addEventListener('click', function (e) {
+                    if (e.target === overlay) {
+                        overlay.classList.remove('is-open');
+                        overlay.setAttribute('aria-hidden', 'true');
+                        document.body.classList.remove('active');
+                    }
+                });
+            }
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    overlay.classList.remove('is-open');
+                    overlay.setAttribute('aria-hidden', 'true');
+                    document.body.classList.remove('active');
+                });
+            }
         })();
     </script>
 </body>
