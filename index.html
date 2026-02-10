@@ -100,18 +100,47 @@
         </div>
 
         <div class="research-grid">
-            <article class="research-card shadow-large">
-                <div class="research-media">
-                    <img src="images/thesis.png" alt="Dissertation cover / theme image" />
-                </div>
-                <div class="research-body">
-                    <h3>Dissertation</h3>
-                    <p class="research-title">
-                        Cyber (u/dys)topias: Glitching Sociotechnical Imaginaries in Singapore's Smart Nation
-                    </p>
-                    <p>
-                        I examine Singapore’s Smart Nation as a technopolitical imaginary that produces compliant digital subjects while obscuring infrastructural and affective violence, and theorise the glitching cyborg as a site where this power fractures.
-                    </p>
+            <article class="research-card research-card--flip shadow-large" tabindex="0">
+                <div class="research-flip">
+                    <div class="research-face research-front">
+                        <span class="research-flip-icon" aria-hidden="true">↻</span>
+                        <div class="research-media">
+                            <img src="images/thesis.png" alt="Dissertation cover / theme image" />
+                        </div>
+                        <div class="research-body">
+                            <h3>Dissertation</h3>
+                            <p class="research-title">
+                                Cyber (u/dys)topias: Glitching Sociotechnical Imaginaries in Singapore's Smart Nation
+                            </p>
+                            <p>
+                                I examine Singapore’s Smart Nation as a technopolitical imaginary that produces compliant digital subjects while obscuring infrastructural and affective violence, and theorise the glitching cyborg as a site where this power fractures.
+                            </p>
+                            <span class="research-hint">Tap to read image ethics note</span>
+                        </div>
+                    </div>
+                    <div class="research-face research-back">
+                        <span class="research-flip-icon" aria-hidden="true">↺</span>
+                        <div class="research-body">
+                            <h3>Image Ethics Note</h3>
+                            <p>
+                                This site includes AI-generated images. Generative AI is entangled with significant ethical concerns,
+                                including environmental cost, data extraction, and the use of creative work without clear consent or compensation.
+                                These conditions shape how the images are presented here.
+                            </p>
+                            <p>
+                                Rather than functioning as illustrations of the future, the visuals are treated as cultural artifacts that reveal
+                                dominant imaginaries of cyber-utopia and dystopia—and invite reflection on why technological futures are so often
+                                pictured in the same ways. Their recurring aesthetics—neon luminosity, seamless cybernetic bodies, planetary ruins,
+                                frictionless interfaces—do not simply depict possible worlds; they index the cultural logics, economic structures,
+                                and historical narratives that make certain futures more visible than others.
+                            </p>
+                            <p>
+                                The images are therefore used reflexively: not to affirm algorithmic vision as neutral or authoritative, but to
+                                foreground the politics, infrastructures, and exclusions embedded in contemporary systems of automated image production.
+                            </p>
+                            <span class="research-hint">Tap to return</span>
+                        </div>
+                    </div>
                 </div>
             </article>
 
@@ -182,6 +211,21 @@
                 setTimeout(function () {
                     el.classList.add('is-visible');
                 }, 250 + i * 220);
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var card = document.querySelector('.research-card--flip');
+            if (!card) return;
+            card.addEventListener('click', function () {
+                card.classList.toggle('is-flipped');
+            });
+            card.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.classList.toggle('is-flipped');
+                }
             });
         })();
     </script>

@@ -402,6 +402,15 @@ footer {
     }
 }
 
+@keyframes flipPulse {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-2px) scale(1.05);
+    }
+}
+
 #about {
     padding: 75px 15px;
     border-bottom: 1px solid #dcd9d9;
@@ -476,6 +485,74 @@ footer {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
+
+.research-card--flip {
+    perspective: 1200px;
+    cursor: pointer;
+}
+
+.research-flip {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s ease;
+    min-height: 100%;
+}
+
+.research-card--flip.is-flipped .research-flip {
+    transform: rotateY(180deg);
+}
+
+.research-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 18px;
+}
+
+.research-flip-icon {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.05em;
+    color: #000080;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 128, 0.2);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    animation: flipPulse 2.4s ease-in-out infinite;
+}
+
+.research-card--flip.is-flipped .research-flip-icon {
+    animation: none;
+}
+
+.research-front {
+    position: relative;
+}
+
+.research-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(145deg, #ffffff 0%, #f7f3fb 100%);
+    overflow-y: auto;
+}
+
+.research-card--flip .research-body {
+    padding: 22px 24px 24px;
+}
+
+.research-hint {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.85em;
+    color: #666666;
 }
 
 .research-media img {
