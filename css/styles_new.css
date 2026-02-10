@@ -1132,12 +1132,34 @@ footer {
     }
 
     .edu-nav {
-        display: inline-flex;
-        margin: 12px auto 6px;
+        display: none;
     }
 
     .flip-inner {
-        min-height: 360px;
+        min-height: auto;
+    }
+
+    .flip-inner {
+        transform: none !important;
+    }
+
+    .flip-face {
+        position: relative;
+        inset: auto;
+        backface-visibility: visible;
+    }
+
+    .flip-back {
+        transform: none;
+        display: none;
+    }
+
+    .flip-card.is-flipped .flip-back {
+        display: block;
+    }
+
+    .flip-card.is-flipped .flip-front {
+        display: none;
     }
 
     .edu-scroll-hint {
