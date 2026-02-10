@@ -454,6 +454,19 @@ footer {
     line-height: 1.7;
 }
 
+.about-copy a {
+    color: #c77dff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(199, 125, 255, 0.4);
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.about-copy a:hover,
+.about-copy a:focus {
+    color: #e1a3ff;
+    border-bottom-color: rgba(225, 163, 255, 0.7);
+}
+
 .research-section {
     padding: 80px 15px 90px;
 }
@@ -886,7 +899,8 @@ footer {
     }
 
     .edu-nav {
-        display: none;
+        display: inline-flex;
+        margin: 12px auto 6px;
     }
 
     .flip-inner {
@@ -948,6 +962,20 @@ footer {
     overflow: hidden;
     width: 100%;
     touch-action: pan-y;
+}
+
+@media (max-width: 768px) {
+    .edu-viewport {
+        overflow: visible;
+    }
+
+    .edu-track {
+        gap: 16px;
+    }
+
+    .flip-card {
+        padding: 6px;
+    }
 }
 
 .edu-scroll-hint {
@@ -1717,7 +1745,7 @@ footer {
         min-height: 60svh;
         padding-top: calc(80px + env(safe-area-inset-top));
         padding-bottom: calc(30px + env(safe-area-inset-bottom));
-        background-position: center 18%;
+        background-position: 30% 18%;
     }
 
     #lead-content {

@@ -174,9 +174,20 @@
             var startY = 0;
             var startX = 0;
             var isSwiping = false;
+            var isMobile = function () {
+                return window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+            };
 
             function update() {
                 if (!track) return;
+                if (isMobile()) {
+                    track.style.transform = 'none';
+                    if (viewport) {
+                        viewport.style.height = 'auto';
+                    }
+                    updateButtons();
+                    return;
+                }
                 var cardHeight = cards[0] ? cards[0].offsetHeight : 0;
                 var peek = 64;
                 track.style.transform = 'translateY(' + (-index * cardHeight) + 'px)';
@@ -189,6 +200,11 @@
             function go(delta) {
                 if (!cards.length) return;
                 index = Math.max(0, Math.min(cards.length - 1, index + delta));
+                if (isMobile()) {
+                    cards[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    updateButtons();
+                    return;
+                }
                 update();
             }
 
@@ -207,6 +223,7 @@
 
             if (viewport) {
                 viewport.addEventListener('touchstart', function (e) {
+                    if (isMobile()) return;
                     if (!e.touches || e.touches.length !== 1) return;
                     startY = e.touches[0].clientY;
                     startX = e.touches[0].clientX;
@@ -214,6 +231,7 @@
                 }, { passive: true });
 
                 viewport.addEventListener('touchmove', function (e) {
+                    if (isMobile()) return;
                     if (!e.touches || e.touches.length !== 1) return;
                     var dy = e.touches[0].clientY - startY;
                     var dx = e.touches[0].clientX - startX;
@@ -223,6 +241,7 @@
                 }, { passive: true });
 
                 viewport.addEventListener('touchend', function (e) {
+                    if (isMobile()) return;
                     if (!isSwiping || !e.changedTouches || !e.changedTouches.length) return;
                     var endY = e.changedTouches[0].clientY;
                     var dy = endY - startY;
