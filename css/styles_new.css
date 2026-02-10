@@ -72,6 +72,17 @@ html.a11y-mode #footer .email-link {
     text-decoration: none;
 }
 
+html.a11y-mode #lead .btn-rounded-white {
+    color: #ffd54f;
+    border-color: #ffd54f;
+}
+
+html.a11y-mode #lead .btn-rounded-white:hover,
+html.a11y-mode #lead .btn-rounded-white:focus {
+    background: #ffd54f;
+    color: #000000;
+}
+
 html.a11y-mode #footer .email-link {
     display: none;
 }
@@ -817,6 +828,108 @@ footer {
     align-items: center;
     justify-content: center;
     padding: 20px;
+}
+
+.edu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 8, 20, 0.65);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.edu-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.edu-dialog {
+    background: #ffffff;
+    color: #000000;
+    border-radius: 18px;
+    padding: 22px;
+    max-width: 720px;
+    width: min(92vw, 720px);
+    max-height: 80vh;
+    overflow-y: auto;
+    transform: scale(0.94);
+    transition: transform 0.25s ease;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.edu-overlay.is-open .edu-dialog {
+    transform: scale(1);
+}
+
+.edu-close {
+    border: none;
+    background: #000080;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.edu-dialog-body h4 {
+    margin-top: 12px;
+}
+
+.exp-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6, 8, 20, 0.65);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.exp-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.exp-dialog {
+    background: #ffffff;
+    color: #000000;
+    border-radius: 18px;
+    padding: 22px;
+    max-width: 720px;
+    width: min(92vw, 720px);
+    max-height: 80vh;
+    overflow-y: auto;
+    transform: scale(0.94);
+    transition: transform 0.25s ease;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.exp-overlay.is-open .exp-dialog {
+    transform: scale(1);
+}
+
+.exp-close {
+    border: none;
+    background: #000080;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
 }
 
 .ethics-overlay.is-open {

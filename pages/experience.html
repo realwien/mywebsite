@@ -137,6 +137,16 @@
         </div>
     </div>
 
+    <div class="exp-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="exp-overlay-title">
+        <div class="exp-dialog">
+            <button class="exp-close" type="button" aria-label="Close">Close</button>
+            <div class="exp-dialog-content">
+                <h3 id="exp-overlay-title">Experience</h3>
+                <div class="exp-dialog-body"></div>
+            </div>
+        </div>
+    </div>
+
     <footer id="footer">
         <div class="footer-content">
             <h2>Get in Touch</h2>
@@ -179,6 +189,14 @@
     </script>
     <script>
         (function () {
+            var overlay = document.querySelector('.exp-overlay');
+            var overlayBody = overlay ? overlay.querySelector('.exp-dialog-body') : null;
+            var overlayTitle = overlay ? overlay.querySelector('#exp-overlay-title') : null;
+            var overlayClose = overlay ? overlay.querySelector('.exp-close') : null;
+            var isMobile = function () {
+                return window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+            };
+
             function initFlipForItem(item) {
                 if (item.dataset.flipReady) return;
                 item.dataset.flipReady = 'true';
@@ -221,6 +239,15 @@
                 window.addEventListener('resize', sizeFlip);
 
                 item.addEventListener('click', function () {
+                    if (isMobile() && overlay && overlayBody) {
+                        overlayBody.innerHTML = '<div class="flip-content">' + backHtml + '</div>';
+                        if (overlayTitle) overlayTitle.textContent = 'Experience';
+                        overlay.classList.add('is-open');
+                        overlay.setAttribute('aria-hidden', 'false');
+                        document.body.classList.add('ethics-open');
+                        if (overlayClose) overlayClose.focus();
+                        return;
+                    }
                     item.classList.toggle('is-flipped');
                     setTimeout(sizeFlip, 20);
                 });
@@ -228,6 +255,15 @@
                 item.addEventListener('keypress', function (e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
+                        if (isMobile() && overlay && overlayBody) {
+                            overlayBody.innerHTML = '<div class="flip-content">' + backHtml + '</div>';
+                            if (overlayTitle) overlayTitle.textContent = 'Experience';
+                            overlay.classList.add('is-open');
+                            overlay.setAttribute('aria-hidden', 'false');
+                            document.body.classList.add('ethics-open');
+                            if (overlayClose) overlayClose.focus();
+                            return;
+                        }
                         item.classList.toggle('is-flipped');
                         setTimeout(sizeFlip, 20);
                     }
@@ -255,6 +291,23 @@
             window.addEventListener('load', function () {
                 ensureInit();
             });
+
+            if (overlay) {
+                overlay.addEventListener('click', function (e) {
+                    if (e.target === overlay) {
+                        overlay.classList.remove('is-open');
+                        overlay.setAttribute('aria-hidden', 'true');
+                        document.body.classList.remove('ethics-open');
+                    }
+                });
+            }
+            if (overlayClose) {
+                overlayClose.addEventListener('click', function () {
+                    overlay.classList.remove('is-open');
+                    overlay.setAttribute('aria-hidden', 'true');
+                    document.body.classList.remove('ethics-open');
+                });
+            }
         })();
     </script>
 </body>

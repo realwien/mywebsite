@@ -120,6 +120,15 @@
         </div>
     </section>
 
+    <div class="edu-overlay" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="edu-overlay-title">
+        <div class="edu-dialog">
+            <button class="edu-close" type="button" aria-label="Close">Close</button>
+            <div class="edu-dialog-content">
+                <div class="edu-dialog-body"></div>
+            </div>
+        </div>
+    </div>
+
     <div id="awards" class="awards-section">
         <div class="container">
             <h2 class="heading">Awards</h2>
@@ -214,6 +223,10 @@
             var isMobile = function () {
                 return window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
             };
+            var overlay = document.querySelector('.edu-overlay');
+            var overlayBody = overlay ? overlay.querySelector('.edu-dialog-body') : null;
+            var overlayTitle = overlay ? overlay.querySelector('#edu-overlay-title') : null;
+            var overlayClose = overlay ? overlay.querySelector('.edu-close') : null;
 
             function update() {
                 if (!track) return;
@@ -295,15 +308,54 @@
                         e.preventDefault();
                         return;
                     }
+                    if (isMobile() && overlay && overlayBody) {
+                        var back = card.querySelector('.flip-back');
+                        if (back) {
+                            overlayBody.innerHTML = back.innerHTML;
+                        }
+                        overlay.classList.add('is-open');
+                        overlay.setAttribute('aria-hidden', 'false');
+                        document.body.classList.add('ethics-open');
+                        if (overlayClose) overlayClose.focus();
+                        return;
+                    }
                     card.classList.toggle('is-flipped');
                 });
                 card.addEventListener('keypress', function (e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
+                        if (isMobile() && overlay && overlayBody) {
+                            var back = card.querySelector('.flip-back');
+                            if (back) {
+                                overlayBody.innerHTML = back.innerHTML;
+                            }
+                            overlay.classList.add('is-open');
+                            overlay.setAttribute('aria-hidden', 'false');
+                            document.body.classList.add('ethics-open');
+                            if (overlayClose) overlayClose.focus();
+                            return;
+                        }
                         card.classList.toggle('is-flipped');
                     }
                 });
             });
+
+            if (overlay) {
+                overlay.addEventListener('click', function (e) {
+                    if (e.target === overlay) {
+                        overlay.classList.remove('is-open');
+                        overlay.setAttribute('aria-hidden', 'true');
+                        document.body.classList.remove('ethics-open');
+                    }
+                });
+            }
+            if (overlayClose) {
+                overlayClose.addEventListener('click', function () {
+                    overlay.classList.remove('is-open');
+                    overlay.setAttribute('aria-hidden', 'true');
+                    document.body.classList.remove('ethics-open');
+                });
+            }
 
             update();
             updateButtons();
