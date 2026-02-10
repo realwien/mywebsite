@@ -494,9 +494,9 @@ footer {
 
 .research-flip {
     position: relative;
+    display: grid;
     transform-style: preserve-3d;
     transition: transform 0.7s ease;
-    min-height: 100%;
 }
 
 .research-card--flip.is-flipped .research-flip {
@@ -504,8 +504,9 @@ footer {
 }
 
 .research-face {
-    position: absolute;
-    inset: 0;
+    position: relative;
+    inset: auto;
+    grid-area: 1 / 1;
     backface-visibility: hidden;
     display: flex;
     flex-direction: column;
