@@ -15,6 +15,8 @@
 </head>
 
 <body class="page-education">
+    <a class="skip-link" href="#education">Skip to content</a></div>
+    </div>
     <div id="mobile-menu-open" class="shadow-large" aria-label="Open menu" role="button" tabindex="0">
         <i class="fa fa-bars" aria-hidden="true"></i>
     </div>
@@ -30,7 +32,9 @@
             <li><a class="no-scroll" href="experience.html">Experience &amp; Awards</a></li>
             <li><a class="no-scroll" href="writing.html">Publications &amp; Media</a></li>
             <li><a href="#footer">Contact</a></li>
-        </ul>
+
+        <li><button class="a11y-toggle" type="button" aria-pressed="false">Accessibility: Off</button></li>
+</ul>
     </header>
     <!-- End header -->
     <section class="page-header">
@@ -130,7 +134,11 @@
     <footer id="footer">
         <div class="footer-content">
             <h2>Get in Touch</h2>
-            <a href="mailto:wien001@e.ntu.edu.sg" class="email-link">Email</a>
+            <div class="email-actions">
+                <a href="mailto:wien001@e.ntu.edu.sg" class="email-link">Email</a>
+                <button class="email-copy" type="button" data-email="wien001@e.ntu.edu.sg">Copy email</button>
+                <span class="email-address">wien001 [at] e.ntu.edu.sg</span>
+            </div>
 
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/ngwien/" class="social-link linkedin" target="_blank" rel="noopener noreferrer">

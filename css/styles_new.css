@@ -13,6 +13,73 @@ body.active {
     overflow: hidden;
     z-index: -1;
 }
+html.a11y-mode body {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+html.a11y-mode *,
+html.a11y-mode *::before,
+html.a11y-mode *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+}
+
+html.a11y-mode a {
+    color: #0033cc;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+html.a11y-mode a:hover,
+html.a11y-mode a:focus {
+    color: #000000;
+}
+
+html.a11y-mode a:focus-visible,
+html.a11y-mode button:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
+html.a11y-mode #about a,
+html.a11y-mode .press-dark a {
+    color: #ffd54f;
+}
+
+html.a11y-mode .press-dark .project-info a {
+    color: #0033cc;
+}
+
+html.a11y-mode .press-dark .project-info a:hover,
+html.a11y-mode .press-dark .project-info a:focus {
+    color: #000000;
+}
+
+html.a11y-mode #about a:hover,
+html.a11y-mode #about a:focus,
+html.a11y-mode .press-dark a:hover,
+html.a11y-mode .press-dark a:focus {
+    color: #ffffff;
+}
+
+html.a11y-mode .btn-rounded-white,
+html.a11y-mode #footer .email-link {
+    border-width: 3px;
+    text-decoration: none;
+}
+
+html.a11y-mode #footer .email-link {
+    display: none;
+}
+
+html.a11y-mode .research-links a,
+html.a11y-mode .project-info a {
+    border-bottom: 2px solid currentColor;
+}
 
 .no-js #experience-timeline > div {
     background: #fff;
@@ -89,6 +156,141 @@ header a {
     padding: 10px;
 }
 
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 10px;
+    background: #000080;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 10px;
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
+html.a11y-mode .skip-link {
+    display: none;
+}
+
+header .a11y-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 2px solid #000080;
+    background: #ffffff;
+    color: #000080;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+header .a11y-toggle:hover,
+header .a11y-toggle:focus {
+    background: #000080;
+    color: #ffffff;
+    outline: none;
+}
+
+header .a11y-toggle:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
+.a11y-fab {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1500;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid #000080;
+    background: #ffffff;
+    color: #000080;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.a11y-fab.is-on {
+    background: #000080;
+    color: #ffffff;
+}
+
+.a11y-fab:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
+}
+
+.a11y-prompt {
+    position: fixed;
+    inset: 0;
+    z-index: 1600;
+    background: rgba(6, 8, 20, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+}
+
+.a11y-prompt.is-open {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.a11y-prompt-card {
+    background: #ffffff;
+    color: #000000;
+    border-radius: 16px;
+    padding: 20px 22px;
+    max-width: 520px;
+    width: min(92vw, 520px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.a11y-prompt-card h3 {
+    margin-top: 0;
+}
+
+.a11y-prompt-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.a11y-enable,
+.a11y-dismiss {
+    border: 2px solid #000080;
+    background: #ffffff;
+    color: #000080;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.a11y-enable:hover,
+.a11y-enable:focus,
+.a11y-dismiss:hover,
+.a11y-dismiss:focus {
+    background: #000080;
+    color: #ffffff;
+    outline: none;
+}
 header a:hover {
     color: #9900c9;
     text-decoration: none;
@@ -99,6 +301,33 @@ header a:hover {
 header a:focus {
     color: #000080;
     text-decoration: none;
+}
+
+.research-open-note,
+.research-close-note {
+    border: 2px solid #000080;
+    background: #ffffff;
+    color: #000080;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 8px 14px;
+    cursor: pointer;
+    margin-top: 12px;
+}
+
+.research-open-note:hover,
+.research-open-note:focus,
+.research-close-note:hover,
+.research-close-note:focus {
+    background: #000080;
+    color: #ffffff;
+    outline: none;
+}
+
+.research-open-note:focus-visible,
+.research-close-note:focus-visible {
+    outline: 3px solid #ffbf47;
+    outline-offset: 3px;
 }
 
 header.active {
@@ -1524,6 +1753,33 @@ footer {
     text-decoration: none;
 }
 
+.publications-note {
+    max-width: 860px;
+    margin: 0 auto 30px;
+    text-align: left;
+    padding: 0;
+}
+
+.publications-note p {
+    margin: 0;
+    color: #000000;
+    line-height: 1.7;
+    font-size: 1.02em;
+}
+
+.publications-note a {
+    color: #000080;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 0, 128, 0.25);
+}
+
+.publications-note a:hover,
+.publications-note a:focus {
+    color: #9900c9;
+    border-bottom-color: rgba(153, 0, 201, 0.4);
+}
+
 /* Footer Styles */
 #footer {
     background: hsl(282, 64%, 84%);
@@ -1555,6 +1811,46 @@ footer {
 #footer .email-link:hover {
     background: #fff; /* White background */
     color: #9900c9; /* Purple text */
+}
+
+#footer .email-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#footer .email-copy,
+#footer .email-address {
+    display: none;
+}
+
+html.a11y-mode #footer .email-copy,
+html.a11y-mode #footer .email-address {
+    display: inline-block;
+}
+
+#footer .email-copy {
+    border: 2px solid #000080;
+    background: #ffffff;
+    color: #000080;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 8px 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#footer .email-copy:hover,
+#footer .email-copy:focus {
+    background: #000080;
+    color: #ffffff;
+}
+
+#footer .email-address {
+    font-size: 0.95em;
+    color: #000000;
+    letter-spacing: 0.01em;
 }
 
 #footer .social-links {
@@ -1687,8 +1983,7 @@ footer {
         opacity: 0;
         transform: translateY(-6px);
         transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-    #lead-content h1 {
+    }    #lead-content h1 {
         font-size: 2em;
     }
     #lead-content h2 {
