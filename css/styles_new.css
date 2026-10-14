@@ -144,7 +144,7 @@ header {
     left: 0;
     right: 0;
     text-align: center;
-    z-index: 10;
+    z-index: 1000;
     animation-name: dropHeader;
     animation-iteration-count: 1;
     animation-timing-function: ease;
@@ -443,12 +443,24 @@ footer {
     color: #000000;
 }
 
-#more .btn-rounded-white {
+.manifesto-graph {
+    display: block;
+    width: 100%;
+    height: min(70vh, 720px);
+    min-height: 500px;
+    margin: 0 auto 28px;
+    border: 1px solid #29383b;
+    background: #000000;
+}
+
+#more .btn-rounded-white,
+.manifesto-home-section .btn-rounded-white {
     color: #000080;
     border-color: #000080;
 }
 
-#more .btn-rounded-white:hover {
+#more .btn-rounded-white:hover,
+.manifesto-home-section .btn-rounded-white:hover {
     color: #ffffff;
     background: #000080;
 }
@@ -618,7 +630,7 @@ footer {
     display: grid;
     grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
     gap: 28px;
-    align-items: start;
+    align-items: center;
 }
 
 .about-media {
@@ -1028,10 +1040,69 @@ footer {
     color: #ffffff;
 }
 
+.presentations-section {
+    background: #f2f4fb;
+    padding: 50px 15px 70px;
+    border-top: 1px solid #e8e3ee;
+}
+
+#conferences {
+    background: #f1f4fb;
+}
+
+#conferences .heading {
+    display: block;
+    text-align: center;
+}
+
+#guest-lectures {
+    background: #fbf2f7;
+    border-color: #efe1ea;
+}
+
+.presentations-section .heading,
+#press .heading {
+    color: #17172c;
+}
+
+#press {
+    background: #f6f5fa;
+    border-top: 1px solid #e8e3ee;
+}
+
+.presentation-list {
+    max-width: 900px;
+    margin: 0 auto 42px;
+    padding: 0;
+    list-style: none;
+}
+
+.presentation-list li {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(23, 23, 44, 0.14);
+    color: #17172c;
+    line-height: 1.6;
+}
+
+.presentation-list li strong {
+    display: block;
+    font-weight: 600;
+}
+
+.presentation-list li span {
+    display: block;
+    margin-top: 6px;
+    color: #4d4d64;
+}
+
+.presentations-subheading {
+    margin-top: 8px;
+}
+
 .press-dark .project {
     background: #ffffff;
     border: 1px solid #e6e6e6;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     width: 100%;
     max-width: 100%;
@@ -1044,7 +1115,7 @@ footer {
 
 .press-dark .project-image img {
     border: 1px solid #e6e6e6;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .press-dark .project-info h3 {
@@ -1068,7 +1139,7 @@ footer {
 
 .press-dark .project:hover {
     transform: translateY(-6px);
-    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 22px 40px rgba(0, 0, 0, 0.18);
     border-color: #d6d6ea;
 }
 
@@ -2205,7 +2276,8 @@ html.a11y-mode #footer .email-address {
         padding: 55px 15px 65px;
     }
 
-    #more .btn-rounded-white {
+    #more .btn-rounded-white,
+    .manifesto-home-section .btn-rounded-white {
         width: 100%;
         max-width: 320px;
         margin: 8px auto;
