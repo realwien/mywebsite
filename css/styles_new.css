@@ -1050,8 +1050,15 @@ footer {
     background: #f1f4fb;
 }
 
-#conferences .heading {
+#published_works > .heading,
+#conferences .heading,
+#guest-lectures .heading,
+#press .heading {
     display: block;
+    font-family: "Open Sans", sans-serif;
+    font-size: 2em;
+    font-weight: 300;
+    line-height: 1.1;
     text-align: center;
 }
 
